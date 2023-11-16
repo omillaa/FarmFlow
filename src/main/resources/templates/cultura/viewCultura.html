@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Culturas</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+<h1>Culturas <a href="/cultura/formCultura">Novo</a></h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Tempo</th>
+        <th>Tipo da Cultura</th>
+        <th>Tipo do Solo</th>
+        <th>Estação</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cultura : ${lista}">
+    <td th:text="${cultura.nome}"></td>
+    <td th:text="${cultura.descricao}"></td>
+    <td th:text="${cultura.tempo}"></td>
+    <td th:text="${cultura.tipo}"></td>
+    <td th:text="${cultura.tipos}"></td>
+    <td th:text="${cultura.est}"></td>
+    <td>
+        <form action="/cultura" method="post">
+            <input type="hidden" name="_method" value ="delete">
+            <input type="hidden" name="id" th:value ="${cultura.id}">
+            <input type="submit" value="Excluir">
+        </form>
+
+        <form action="/cultura/formCultura" method="get">
+            <input type="hidden" name="id" th:value="${cultura.id}">
+            <input type="submit" value="Editar">
+        </form>
+
+
+    </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
