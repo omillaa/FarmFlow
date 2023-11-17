@@ -40,6 +40,7 @@ public class Irrigacao {
         this.tipoIrrig = dados.tipoIrrig();
         this.observacao = dados.observacao();
     }
+    @Override
     public String toString()
     {
         return "Irrigacao{" +

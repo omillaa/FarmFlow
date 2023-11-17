@@ -32,6 +32,7 @@ public class Plantacao {
         this.areaCultivo = dados.areaCultivo();
         this.estagio = dados.estagio();
     }
+    @Override
     public String toString()
     {
         return "Plantacao{" +
