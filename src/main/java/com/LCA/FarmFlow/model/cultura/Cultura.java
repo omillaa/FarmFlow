@@ -16,7 +16,7 @@ public class Cultura {
     private String descricao;
     private String tempo;
     private String tipo;
-    private String tipos;
+    private String tipos;//
     @Column(name = "estacao")
     private String est;
     public Cultura(DadosCadastraCultura dados){
