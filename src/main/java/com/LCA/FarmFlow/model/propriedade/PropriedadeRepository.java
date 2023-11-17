@@ -1,4 +1,6 @@
 package com.LCA.FarmFlow.model.propriedade;
 
-public interface PropriedadeRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PropriedadeRepository extends JpaRepository<Propriedade,Long> {
 }

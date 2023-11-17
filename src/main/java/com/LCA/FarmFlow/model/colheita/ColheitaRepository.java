@@ -1,4 +1,6 @@
 package com.LCA.FarmFlow.model.colheita;
 
-public interface ColheitaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ColheitaRepository extends JpaRepository<Colheita,Long> {
 }

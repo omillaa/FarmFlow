@@ -1,4 +1,6 @@
 package com.LCA.FarmFlow.model.irrigacao;
 
-public interface IrrigacaoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IrrigacaoRepository extends JpaRepository<Irrigacao,Long> {
 }
