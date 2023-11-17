@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cadastro de Propriedades</title>
 </head>
 <body>
+<div layout:fragment="conteudo">
+    <h1>Cadastro de Propriedades</h1>
+    <form method="post" action="/propriedade">
+        <input type="hidden" name="_method" value ="put" th:if="${propriedade!=null}">
+        <input type="hidden" name="idPropriedade" th:value ="${propriedade?.idPropriedade}">
 
+        <div>
+            <label for="nome">Nome:</label>
+            <input id="nome" name="nome" th:value="${propriedade?.nome}">
+        </div>
+
+        <div>
+            <label for="endereco">Endereço:</label>
+            <input id="endereco" name="endereco" th:value="${propriedade?.endereco}">
+        </div>
+
+        <div>
+            <label for="areaTotal">Área Total da Propriedade:</label>
+            <input id="areaTotal" name="areaTotal" th:value="${propriedade?.areaTotal}">
+        </div>
+
+        <div>
+            <label for="responsavel">Responsável pela Propriedade:</label>
+            <input id="responsavel" name="responsavel" th:value="${propriedade?.responsavel}">
+        </div>
+
+        <div style="display: flex; justify-content:center;">
+            <input type="submit" value="Cadastrar">
+            <a href="/menu/principal">Menu</a>
+        </div>
+
+    </form>
+</div>
 </body>
 </html>

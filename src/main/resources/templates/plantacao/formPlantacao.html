@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cadastro de Plantações</title>
 </head>
 <body>
+<div layout:fragment="conteudo">
+    <h1>Cadastro de Plantações</h1>
+    <form method="post" action="/plantacao">
+        <input type="hidden" name="_method" value ="put" th:if="${plantacao!=null}">
+        <input type="hidden" name="idPlantacao" th:value ="${plantacao?.idPlantacao}">
 
+        <div>
+            <label for="dataPlantio">Data do Plantio: </label>
+            <input id="dataPlantio" name="dataPlantio" th:value="${plantacao?.dataPlantio}">
+        </div>
+
+        <div>
+            <label for="areaCultivo">Tamanho da Área de Cultivo: </label>
+            <input id="areaCultivo" name="areaCultivo" th:value="${plantacao?.areaCultivo}">
+        </div>
+
+        <div>
+        <label for="estagio">Estágio de Crescimento da Cultura:</label>
+        <input id="estagio" name="estagio" th:value="${plantacao?.estagio}">
+    </div>
+
+        <div style="display: flex; justify-content:center;">
+            <input type="submit" value="Cadastrar">
+            <a href="/menu/principal">Menu</a>
+        </div>
+
+    </form>
+</div>
 </body>
 </html>

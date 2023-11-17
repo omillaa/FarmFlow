@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cadastro de Colheitas</title>
 </head>
 <body>
+<div layout:fragment="conteudo">
+    <h1>Cadastro de Colheitas</h1>
+    <form method="post" action="/colheita">
+        <input type="hidden" name="_method" value ="put" th:if="${colheita!=null}">
+        <input type="hidden" name="idColheita" th:value ="${colheita?.idColheita}">
 
+        <div>
+            <label for="dataColheita">Data da Colheita:</label>
+            <input id="dataColheita" name="dataColheita" th:value="${colheita?.dataColheita}">
+        </div>
+
+        <div>
+            <label for="quantidade">Quantidade da Colheita:</label>
+            <input id="quantidade" name="quantidade" th:value="${colheita?.quantidade}">
+        </div>
+
+        <div style="display: flex; justify-content:center;">
+            <input type="submit" value="Cadastrar">
+            <a href="/menu/principal">Menu</a>
+        </div>
+
+    </form>
+</div>
 </body>
 </html>

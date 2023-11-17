@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cadastro de Irrigação</title>
 </head>
 <body>
+<div layout:fragment="conteudo">
+    <h1>Cadastro de Irrigação</h1>
+    <form method="post" action="/irrigacao">
+        <input type="hidden" name="_method" value ="put" th:if="${irrigacao!=null}">
+        <input type="hidden" name="idIrrigacao" th:value ="${irrigacao?.idIrrigacao}">
 
+        <div>
+            <label for="dataIrrig">Data da Irrigação: </label>
+            <input id="dataIrrig" name="dataIrrig" th:value="${irrigacao?.dataIrrig}">
+        </div>
+
+        <div>
+            <label for="quantid">Quantidade de Água: </label>
+            <input id="quantid" name="quantid" th:value="${irrigacao?.quantid}">
+        </div>
+
+        <div>
+            <label for="duracao">Duração da Irrigação(tempo): </label>
+            <input id="duracao" name="duracao" th:value="${irrigacao?.duracao}">
+        </div>
+
+        <div>
+            <label for="tipoIrrig">Tipo da Irrigação: </label>
+            <input id="tipoIrrig" name="tipoIrrig" th:value="${irrigacao?.tipoIrrig}">
+        </div>
+
+        <div>
+            <label for="observacao">Observação: </label>
+            <input id="observacao" name="observacao" th:value="${irrigacao?.observacao}">
+        </div>
+
+        <div style="display: flex; justify-content:center;">
+            <input type="submit" value="Cadastrar">
+            <a href="/menu/principal">Menu</a>
+        </div>
+
+    </form>
+</div>
 </body>
 </html>

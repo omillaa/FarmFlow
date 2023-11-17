@@ -16,7 +16,6 @@ public class Propriedade {
     private Long idPropriedade;
     @OneToMany(mappedBy = "propriedade")
     private List<Plantacao> listaPlantacao= new ArrayList<>();
-
     private String nome;
     private String endereco;
     private double areaTotal;
