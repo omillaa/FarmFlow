@@ -17,7 +17,7 @@ public class Cultura {
     private String tempo;
     private String tipo;
     private String tipos;
-
+    @Column(name = "estacao")
     private String est;
     public Cultura(DadosCadastraCultura dados){
         this.nome = dados.nome();
@@ -44,7 +44,7 @@ public class Cultura {
     public void atualizaDados(DadosAlteraCultura dados) {
         this.nome = dados.nome();
         this.descricao = dados.descricao();
-        this.tempo = dados.tempo();
+        this.tempo = dados.time();
         this.tipo = dados.tipo();
         this.tipos = dados.tipos();
         this.est = dados.est();
