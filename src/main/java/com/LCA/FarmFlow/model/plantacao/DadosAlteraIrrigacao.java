@@ -1,4 +1,4 @@
 package com.LCA.FarmFlow.model.plantacao;
 
-public class DadosCadastraPlantacao {
+public record DadosAlteraIrrigacao() {
 }

@@ -1,4 +1,4 @@
 package com.LCA.FarmFlow.model.propriedade;
 
-public class DadosCadastraPropriedade {
+public record DadosCadastraPropriedade() {
 }

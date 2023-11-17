@@ -1,4 +1,6 @@
 package com.LCA.FarmFlow.model.colheita;
 
-public class DadosAlteraColheita {
+import java.time.LocalDate;
+
+public record DadosAlteraColheita(LocalDate dataColheita, String quantidade) {
 }
