@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Irrigação</title>
 </head>
 <body>
+<div layout:fragment="conteudo">
+    <h1>Irrigação <a href="/irrigacao/formIrrigacao">Novo</a></h1>
 
+    <table>
+        <thead>
+        <tr>
+            <th>Data da Irrigação</th>
+            <th>Quantidade de Água usada</th>
+            <th>Duração da Irrigação(tempo)</th>
+            <th>Tipo da Irrigação</th>
+            <th>Observações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="irrigacao : ${listaIrrigacao}">
+            <td th:text="${irrigacao.dataIrrig}"></td>
+            <td th:text="${irrigacao.quantid}"></td>
+            <td th:text="${irrigacao.duracao}"></td>
+            <td th:text="${irrigacao.tipoIrrig}"></td>
+            <td th:text="${irrigacao.observacao}"></td>
+            <td>
+                <form action="/irrigacao" method="post">
+                    <input type="hidden" name="_method" value ="delete">
+                    <input type="hidden" name="idIrrigacao" th:value ="${irrigacao.idIrrigacao}">
+                    <input type="submit" value="Excluir">
+                </form>
+
+                <form action="/irrigacao/formIrrigacao" method="get">
+                    <input type="hidden" name="id" th:value="${irrigacao.idIrrigacao}">
+                    <input type="submit" value="Editar">
+                </form>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

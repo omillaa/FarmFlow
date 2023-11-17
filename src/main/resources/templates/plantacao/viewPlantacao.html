@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Plantações</title>
 </head>
 <body>
+<div layout:fragment="conteudo">
+    <h1>Plantações <a href="/plantacao/formPlantacao">Novo</a></h1>
 
+    <table>
+        <thead>
+        <tr>
+            <th>Data do Plantio</th>
+            <th>Área do Cultivo</th>
+            <th>Estágio de Crescimento</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="plantacao : ${listaPlantacao}">
+            <td th:text="${plantacao.dataPlantio}"></td>
+            <td th:text="${plantacao.areaCultivo}"></td>
+            <td th:text="${plantacao.estagio}"></td>
+            <td>
+                <form action="/plantacao" method="post">
+                    <input type="hidden" name="_method" value ="delete">
+                    <input type="hidden" name="idPlantacao" th:value ="${plantacao.idPlantacao}">
+                    <input type="submit" value="Excluir">
+                </form>
+
+                <form action="/plantacao/formPlantacao" method="get">
+                    <input type="hidden" name="id" th:value="${plantacao.idPlantacao}">
+                    <input type="submit" value="Editar">
+                </form>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Propriedades</title>
 </head>
 <body>
+<div layout:fragment="conteudo">
+    <h1>Propriedades <a href="/propriedade/formPropriedade">Novo</a></h1>
 
+    <table>
+        <thead>
+        <tr>
+            <th>Nome da Propriedade</th>
+            <th>Endereço da Propriedade</th>
+            <th>Área Total(m2)</th>
+            <th>Responsável pela Propriedade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="propriedade : ${listaPropriedade}">
+            <td th:text="${propriedade.nome}"></td>
+            <td th:text="${propriedade.endereco}"></td>
+            <td th:text="${propriedade.areaTotal}"></td>
+            <td th:text="${propriedade.responsavel}"></td>
+            <td>
+                <form action="/propriedade" method="post">
+                    <input type="hidden" name="_method" value ="delete">
+                    <input type="hidden" name="id" th:value ="${propriedade.id}">
+                    <input type="submit" value="Excluir">
+                </form>
+
+                <form action="/propriedade/formPropriedade" method="get">
+                    <input type="hidden" name="idPropriedade" th:value="${propriedade.idPropriedade}">
+                    <input type="submit" value="Editar">
+                </form>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Colheitas</title>
 </head>
 <body>
+<div layout:fragment="conteudo">
+    <h1>Colheitas <a href="/colheita/formColheita">Novo</a></h1>
 
+    <table>
+        <thead>
+        <tr>
+            <th>Data da Colheita</th>
+            <th>Quantidade Colhida</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="colheita : ${listaColheitas}">
+            <td th:text="${colheita.dataColheita}"></td>
+            <td th:text="${colheita.quantidade}"></td>
+            <td>
+                <form action="/colheita" method="post">
+                    <input type="hidden" name="_method" value ="delete">
+                    <input type="hidden" name="idColheita" th:value ="${colheita.idColheita}">
+                    <input type="submit" value="Excluir">
+                </form>
+
+                <form action="/colheita/formColheita" method="get">
+                    <input type="hidden" name="idColheita" th:value="${colheita.idColheita}">
+                    <input type="submit" value="Editar">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
