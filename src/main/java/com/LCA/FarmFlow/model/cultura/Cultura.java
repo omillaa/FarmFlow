@@ -1,5 +1,6 @@
 package com.LCA.FarmFlow.model.cultura;
 
+import com.LCA.FarmFlow.model.plantacao.Plantacao;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,9 @@ public class Cultura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    @JoinColumn(name = "idPlantacao")
+    private Plantacao plantacao;
     private String nome;
     private String descricao;
     private String tempo;
@@ -56,19 +60,12 @@ public class Cultura {
     public String getDescricao() {return descricao;}
     public void setDescricao(String descricao) {this.descricao = descricao;}
     public String getNome() {return nome;}
-
     public void setNome(String nome) {this.nome = nome;}
-
     public String getTipo() {return tipo;}
-
     public void setTipo(String tipo) {this.tipo = tipo;}
-
     public String getTipos() {return tipos;}
-
     public void setTipos(String tipos) {this.tipos = tipos;}
-
     public String getEst() {return est;}
-
     public void setEst(String est) {this.est = est;}
-
+    public Plantacao getPlantacao() { return plantacao; }
 }

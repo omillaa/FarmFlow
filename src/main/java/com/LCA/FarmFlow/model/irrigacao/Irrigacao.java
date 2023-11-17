@@ -1,5 +1,6 @@
 package com.LCA.FarmFlow.model.irrigacao;
 
+import com.LCA.FarmFlow.model.plantacao.Plantacao;
 import jakarta.persistence.*;
 
 import java.sql.Time;
@@ -11,6 +12,9 @@ public class Irrigacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idIrrigacao;
+    @ManyToOne
+    @JoinColumn(name = "idPlantacao")
+    private Plantacao plantacao;
     private LocalDate dataIrrig;
     private float quantid;
     private Time duracao;
@@ -23,6 +27,7 @@ public class Irrigacao {
     public Time getDuracao() { return duracao; }
     public String getTipoIrrig() { return tipoIrrig; }
     public String getObservacao() { return observacao; }
+    public Plantacao getPlantacao() { return plantacao; }
     public Irrigacao(){}
     public Irrigacao (DadosCadastraIrrigacao dados)
     {
