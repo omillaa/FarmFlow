@@ -7,15 +7,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="cultura")
 public class Cultura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "idPlantacao")
-    private Plantacao plantacao;
+
     private String nome;
     private String descricao;
     private String tempo;
@@ -23,6 +24,8 @@ public class Cultura {
     private String tipos;
     @Column(name = "estacao")
     private String est;
+    @OneToMany(mappedBy = "cultura", cascade = CascadeType.ALL)
+    private List<Plantacao> listaPlantacao = new ArrayList<>();
     public Cultura(DadosCadastraCultura dados){
         this.nome = dados.nome();
         this.descricao = dados.descricao();
@@ -67,5 +70,6 @@ public class Cultura {
     public void setTipos(String tipos) {this.tipos = tipos;}
     public String getEst() {return est;}
     public void setEst(String est) {this.est = est;}
-    public Plantacao getPlantacao() { return plantacao; }
+
+    public List<Plantacao> getListaPlantacao() { return listaPlantacao; }
 }

@@ -17,11 +17,14 @@ public class Plantacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPlantacao;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cultura")
+    private Cultura cultura;
     @ManyToOne
     @JoinColumn(name = "idPropriedade")
     private Propriedade propriedade;
-    @OneToMany(mappedBy = "plantacao", cascade = CascadeType.ALL)
-    private List<Cultura> listaCultura = new ArrayList<>();
+
     private LocalDate dataPlantio;
     private double areaCultivo;
     private String estagio;
@@ -37,7 +40,8 @@ public class Plantacao {
     public List<Colheita> getListaColheitas() { return listaColheitas; }
     public List<Irrigacao> getListaIrrigacao() { return listaIrrigacao; }
     public Propriedade getPropriedade() { return propriedade; }
-    public List<Cultura> getListaCultura() { return listaCultura; }
+
+    public Cultura getCultura() {return cultura;}
 
     public Plantacao(){}
     public Plantacao(DadosCadastraPlantacao dados)
