@@ -27,7 +27,7 @@ public class ColheitaController {
     }
     @GetMapping("/viewColheita")
     public String carregaview(Model model) {
-        model.addAttribute("listaColheita", repositoryColheita.findAll());
+        model.addAttribute("lista", repositoryColheita.findAll());
         return "colheita/viewColheita";
     }
     @PostMapping

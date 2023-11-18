@@ -20,8 +20,8 @@ public class Plantacao {
     @ManyToOne
     @JoinColumn(name = "idPropriedade")
     private Propriedade propriedade;
-    @OneToOne(mappedBy = "cultura", cascade = CascadeType.ALL)
-    private List<Cultura>listaCultura = new ArrayList<>();
+    @OneToMany(mappedBy = "plantacao", cascade = CascadeType.ALL)
+    private List<Cultura> listaCultura = new ArrayList<>();
     private LocalDate dataPlantio;
     private double areaCultivo;
     private String estagio;

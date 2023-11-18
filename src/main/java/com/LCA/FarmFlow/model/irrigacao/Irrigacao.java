@@ -16,7 +16,7 @@ public class Irrigacao {
     @JoinColumn(name = "idPlantacao")
     private Plantacao plantacao;
     private LocalDate dataIrrig;
-    private float quantid;
+    private Float quantid;
     private Time duracao;
     private String tipoIrrig;
     private String observacao;
@@ -33,15 +33,15 @@ public class Irrigacao {
     {
         this.dataIrrig = dados.dataIrrig();
         this.duracao = dados.duracao();
-        this.quantid = dados.quant();
+        this.quantid = dados.quantid();
         this.tipoIrrig = dados.tipoIrrig();
         this.observacao = dados.observacao();
     }
-    public void autualizaDados (DadosAlteraIrrigacao dados)
+    public void atualizaDados (DadosAlteraIrrigacao dados)
     {
         this.dataIrrig = dados.dataIrrig();
         this.duracao = dados.duracao();
-        this.quantid = dados.quant();
+        this.quantid = dados.quantid();
         this.tipoIrrig = dados.tipoIrrig();
         this.observacao = dados.observacao();
     }

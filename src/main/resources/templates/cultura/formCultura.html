@@ -9,47 +9,47 @@
 </head>
 <body>
 <div layout:fragment="conteudo">
-<h1>Cadastro de Culturas</h1>
-<form method="post" action="/cultura">
-    <input type="hidden" name="_method" value ="put" th:if="${cultura!=null}">
-    <input type="hidden" name="id" th:value ="${cultura?.id}">
+    <h1>Cadastro de Culturas</h1>
+    <form method="post" action="/cultura">
+        <input type="hidden" name="_method" value ="put" th:if="${cultura!=null}">
+        <input type="hidden" name="id" th:value ="${cultura?.id}">
 
-    <div>
-    <label for="nome">Nome:</label>
-    <input id="nome" name="nome" th:value="${cultura?.nome}">
+        <div>
+        <label for="nome">Nome:</label>
+        <input id="nome" name="nome" th:value="${cultura?.nome}">
+        </div>
+
+        <div>
+        <label for="descricao">Descrição:</label>
+            <input id="descricao" name="descricao" th:value="${cultura?.descricao}">
+        </div>
+
+        <div>
+        <label for="tempo">Tempo:</label>
+        <input id="tempo" name="tempo" th:value="${cultura?.tempo}">
+        </div>
+
+        <div>
+        <label for="tipo">Tipo da Cultura:</label>
+        <input id="tipo" name="tipo" th:value="${cultura?.tipo}">
+        </div>
+
+        <div>
+        <label for="tipos">Tipo do Solo:</label>
+        <input id="tipos" name="tipos" th:value="${cultura?.tipos}">
+        </div>
+
+        <div>
+        <label for="est">Estação:</label>
+        <input id="est" name="est" th:value="${cultura?.est}">
+        </div>
+
+        <div style="display: flex; justify-content:center;">
+            <input type="submit" value="Cadastrar">
+            <a href="/menu/principal">Menu</a>
+        </div>
+
+    </form>
     </div>
-
-    <div>
-    <label for="descricao">Descrição:</label>
-        <input id="descricao" name="descricao" th:value="${cultura?.descricao}">
-    </div>
-
-    <div>
-    <label for="tempo">Tempo:</label>
-    <input id="tempo" name="tempo" th:value="${cultura?.tempo}">
-    </div>
-
-    <div>
-    <label for="tipo">Tipo da Cultura:</label>
-    <input id="tipo" name="tipo" th:value="${cultura?.tipo}">
-    </div>
-
-    <div>
-    <label for="tipos">Tipo do Solo:</label>
-    <input id="tipos" name="tipos" th:value="${cultura?.tipos}">
-    </div>
-
-    <div>
-    <label for="est">Estação:</label>
-    <input id="est" name="est" th:value="${cultura?.est}">
-    </div>
-
-    <div style="display: flex; justify-content:center;">
-        <input type="submit" value="Cadastrar">
-        <a href="/menu/principal">Menu</a>
-    </div>
-
-</form>
-</div>
-</body>
+    </body>
 </html>

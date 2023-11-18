@@ -1,9 +1,6 @@
 package com.LCA.FarmFlow.controller;
 
-import com.LCA.FarmFlow.model.colheita.Colheita;
-import com.LCA.FarmFlow.model.colheita.ColheitaRepository;
-import com.LCA.FarmFlow.model.colheita.DadosAlteraColheita;
-import com.LCA.FarmFlow.model.colheita.DadosCadastraColheita;
+
 import com.LCA.FarmFlow.model.irrigacao.DadosAlteraIrrigacao;
 import com.LCA.FarmFlow.model.irrigacao.DadosCadastraIrrigacao;
 import com.LCA.FarmFlow.model.irrigacao.Irrigacao;
@@ -18,37 +15,38 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/irrigacao")
 public class IrrigacaoController {
     @Autowired
-    private IrrigacaoRepository repositoryIrrigacao;
+    private IrrigacaoRepository repository;
     @GetMapping("/formIrrigacao")
-    public String carregaPaginaFormulario(Model model, @RequestParam(required = false) Long idIrrigacao) {
-        Irrigacao irrigacao = (idIrrigacao != null) ? repositoryIrrigacao.findById(idIrrigacao).orElse(null) : null;
+    public String carregaPaginaFormulario(Model model, @RequestParam(required = false) Long id) {
+        Irrigacao irrigacao = (id != null) ? repository.findById(id).orElse(null) : null;
         model.addAttribute("irrigacao", irrigacao);
         return "irrigacao/formIrrigacao";
     }
     @GetMapping("/viewIrrigacao")
     public String carregaview(Model model) {
-        model.addAttribute("listaIrrigacao", repositoryIrrigacao.findAll());
+        model.addAttribute("lista", repository.findAll());
         return "irrigacao/viewIrrigacao";
     }
     @PostMapping
     public String cadastraIrrigacao(DadosCadastraIrrigacao dados) {
-        Irrigacao I = new Irrigacao(dados);
-        repositoryIrrigacao.save(I);
+        Irrigacao i1 = new Irrigacao(dados);
+        repository.save(i1);
         return "redirect:/irrigacao/formIrrigacao";
     }
     @DeleteMapping
     @Transactional
-    public String removeIrrigacao(Long idIrrigacao)
+    public String removeIrrigacao(Long id)
     {
-        repositoryIrrigacao.deleteById(idIrrigacao);
+        repository.deleteById(id);
         return "redirect:/irrigacao/viewIrrigacao";
     }
     @PutMapping
     @Transactional
     public String alteraIrrigacao(DadosAlteraIrrigacao dados)
     {
-        Irrigacao I = repositoryIrrigacao.getReferenceById(dados.idIrrigacao());
-        I.autualizaDados(dados);
+        Irrigacao i1  = repository.getReferenceById(dados.idIrrigacao());
+       i1.atualizaDados(dados);
         return "irrigacao/formIrrigacao";
     }
+
 }

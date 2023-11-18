@@ -44,7 +44,7 @@ public class Propriedade {
     @Override
     public String toString()
     {
-        return "Prpriedade{" +
+        return "Propriedade{" +
                 "nome='" + nome + '\'' +
                 ", endereco='" + endereco+ '\'' +
                 ", areaTotal='" + areaTotal + '\'' +
