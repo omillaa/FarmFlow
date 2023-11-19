@@ -17,6 +17,8 @@
             <th>Data do Plantio</th>
             <th>Área do Cultivo</th>
             <th>Estágio de Crescimento</th>
+            <th>Cultura</th>
+            <th>Propriedade</th>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +26,8 @@
             <td th:text="${plantacao.dataPlantio}"></td>
             <td th:text="${plantacao.areaCultivo}"></td>
             <td th:text="${plantacao.estagio}"></td>
+            <td th:text="${plantacao.cultura.nome}"></td>
+            <td th:text="${plantacao.propriedade.nome}"></td>
             <td>
                 <form action="/plantacao" method="post">
                     <input type="hidden" name="_method" value ="delete">
@@ -35,7 +39,6 @@
                     <input type="hidden" name="id" th:value="${plantacao.idPlantacao}">
                     <input type="submit" value="Editar">
                 </form>
-
 
             </td>
         </tr>

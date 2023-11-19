@@ -49,12 +49,16 @@ public class Plantacao {
         this.dataPlantio = dados.dataPlantio();
         this.areaCultivo = dados.areaCultivo();
         this.estagio = dados.estagio();
+        this.cultura = dados.cultura();
+        this.propriedade = dados.propriedade();
     }
     public void atualizaDados(DadosAlteraPlantacao dados)
     {
         this.dataPlantio = dados.dataPlantio();
         this.areaCultivo = dados.areaCultivo();
         this.estagio = dados.estagio();
+        this.cultura = dados.cultura();
+        this.propriedade = dados.propriedade();
     }
     @Override
     public String toString()

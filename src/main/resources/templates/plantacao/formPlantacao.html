@@ -28,6 +28,25 @@
         <label for="estagio">Estágio de Crescimento da Cultura:</label>
         <input id="estagio" name="estagio" th:value="${plantacao?.estagio}">
     </div>
+        <div>
+            <label for="cultura">Cultura:</label>
+            <select id="cultura" name="cultura">
+                <option value="">Selecione a Cultura</option>
+                <th:block th:each="cul:${listacultura}">
+                    <option th:value="${cul.id}" th:text="${cul.nome}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div>
+            <label for="propriedade">Propriedade:</label>
+            <select id="propriedade" name="propriedade">
+                <option value="">Selecione a Propriedade</option>
+                <th:block th:each="pro:${listapropriedade}">
+                    <option th:value="${pro.idPropriedade}" th:text="${pro.nome}"></option>
+                </th:block>
+            </select>
+        </div>
 
         <div style="display: flex; justify-content:center;">
             <input type="submit" value="Cadastrar">
