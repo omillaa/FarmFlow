@@ -1,22 +1,50 @@
+/* styles.css */
 
+:root{
+--color-green-50: #005c52;
+    --color-green-100: #23b276;
+    --color-green-200: #a2d49e;
+    --color-gradient: linear-gradient(90deg, var(--color-green-50),
+        var(--color-green-100), var(--color-green-200));
+}
 
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    background: var(--color-gradient);
+    color: white;
 }
 
 h1 {
-    color: #333;
+    text-align: center;
+     color: #ffffff;
+}
+#view_form,
+#view_form2 {
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    width: 80px;
+    height: 50px;
+    box-shadow: none;
+    font-size: 5px;
 }
 
 form {
-    width: 50%;
+    width: 390px;
+    height: 500px;
+    gap: 10px;
     margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    color: var(--color-green-50);
 }
 
 input {
@@ -24,22 +52,70 @@ input {
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+input[type="submit"] {
+    margin-top: 10px;
+        border: none;
+        background: var(--color-gradient);
+        padding: 7px;
+        border-radius: 50px;
+        color: var(--color-light-50);
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.05);
+}
+
+a {
+    color: var(--color-green-200);
+    text-decoration: none;
+    margin-left: 10px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+   background-color: white;
+    width: auto;
+      border-radius: 10px;
+   margin: 20px auto;
 }
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+tr{
+width: auto;
+height: 20px;
+}
+th,
+td {
+   border: 1px solid #ddd;
+    padding: 3px;
     text-align: left;
+    width:auto;
+    color: black;
 }
 
 th {
-    background-color: #f2f2f2;
+   border-radius: 7px;
+    background-color: var(--color-green-100);
+    color: white;
 }
+
 
 
