@@ -19,6 +19,8 @@
             <th>Duração da Irrigação(tempo)</th>
             <th>Tipo da Irrigação</th>
             <th>Observações</th>
+            <th>Plantacao</th>
+            <th>Comandos</th>
         </tr>
         </thead>
         <tbody>
@@ -28,14 +30,15 @@
             <td th:text="${irrigacao.duracao}"></td>
             <td th:text="${irrigacao.tipoIrrig}"></td>
             <td th:text="${irrigacao.observacao}"></td>
+            <td th:text="${irrigacao.plantacao.nome}"></td>
             <td>
-                <form action="/irrigacao" method="post">
-                    <input type="hidden" name="_method" value ="delete">
+                <form action="/irrigacao" method="post" id="view_form">
+                    <input type="hidden" name="_method" value ="delete" >
                     <input type="hidden" name="idIrrigacao" th:value ="${irrigacao.idIrrigacao}">
                     <input type="submit" value="Excluir">
                 </form>
 
-                <form action="/irrigacao/formIrrigacao" method="get">
+                <form action="/irrigacao/formIrrigacao" method="get" id="view_form2">
                     <input type="hidden" name="id" th:value="${irrigacao.idIrrigacao}">
                     <input type="submit" value="Editar">
                 </form>

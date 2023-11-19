@@ -23,10 +23,19 @@
             <label for="quantidade">Quantidade da Colheita:</label>
             <input id="quantidade" name="quantidade" th:value="${colheita?.quantidade}">
         </div>
+        <div>
+        <label for="plantacao">Plantação</label>
+        <select id="plantacao" name="plantacao">
+            <option value="">Escolha a Plantação</option>
+            <th:block th:each="plan:${lista}">
+                <option th:value="${plan.idPlantacao}" th:text="${plan.nome}"></option>
 
+            </th:block>
+        </select>
+        </div>
         <div style="display: flex; justify-content:center;">
             <input type="submit" value="Cadastrar">
-            <a href="/menu/principal">Menu</a>
+
         </div>
 
     </form>

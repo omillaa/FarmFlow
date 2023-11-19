@@ -8,6 +8,8 @@ import com.LCA.FarmFlow.model.cultura.Cultura;
 import com.LCA.FarmFlow.model.cultura.CulturaRepository;
 import com.LCA.FarmFlow.model.cultura.DadosAlteraCultura;
 import com.LCA.FarmFlow.model.cultura.DadosCadastraCultura;
+import com.LCA.FarmFlow.model.plantacao.Plantacao;
+import com.LCA.FarmFlow.model.plantacao.PlantacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,10 +21,18 @@ import org.springframework.web.bind.annotation.*;
 public class ColheitaController {
     @Autowired
     private ColheitaRepository repositoryColheita;
+
+    @Autowired
+    private PlantacaoRepository repositoryPlantacao;
     @GetMapping("/formColheita")
-    public String carregaPaginaFormulario(Model model, @RequestParam(required = false) Long idColheita) {
-        Colheita colheita = (idColheita != null) ? repositoryColheita.findById(idColheita).orElse(null) : null;
-        model.addAttribute("colheita", colheita);
+    public String carregaPaginaFormulario(Model model, Long idColheita)
+    {
+        if(idColheita!=null)
+        {
+            Colheita colheita = repositoryColheita.getReferenceById(idColheita);
+            model.addAttribute("colheita", colheita);
+        }
+        model.addAttribute("lista", repositoryPlantacao.findAll());
         return "colheita/formColheita";
     }
     @GetMapping("/viewColheita")
@@ -49,6 +59,7 @@ public class ColheitaController {
     {
         Colheita C2 = repositoryColheita.getReferenceById(dados.idColheita());
         C2.autualizaDados(dados);
-        return "colheita/formColheita";
+        repositoryColheita.save(C2);
+        return "redirect:/colheita/viewColheita";
     }
 }

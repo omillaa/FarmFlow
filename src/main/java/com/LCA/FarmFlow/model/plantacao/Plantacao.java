@@ -25,6 +25,7 @@ public class Plantacao {
     @JoinColumn(name = "idPropriedade")
     private Propriedade propriedade;
 
+    private String nome;
     private LocalDate dataPlantio;
     private double areaCultivo;
     private String estagio;
@@ -37,6 +38,8 @@ public class Plantacao {
     public LocalDate getDataPlantio() { return dataPlantio; }
     public double getAreaCultivo() { return areaCultivo; }
     public String getEstagio() { return estagio; }
+    public String getNome() {return nome;}
+    public void setNome(String nome) {this.nome = nome;}
     public List<Colheita> getListaColheitas() { return listaColheitas; }
     public List<Irrigacao> getListaIrrigacao() { return listaIrrigacao; }
     public Propriedade getPropriedade() { return propriedade; }
@@ -51,6 +54,7 @@ public class Plantacao {
         this.estagio = dados.estagio();
         this.cultura = dados.cultura();
         this.propriedade = dados.propriedade();
+        this.nome = dados.nome();
     }
     public void atualizaDados(DadosAlteraPlantacao dados)
     {
@@ -59,6 +63,7 @@ public class Plantacao {
         this.estagio = dados.estagio();
         this.cultura = dados.cultura();
         this.propriedade = dados.propriedade();
+        this.nome = dados.nome();
     }
     @Override
     public String toString()

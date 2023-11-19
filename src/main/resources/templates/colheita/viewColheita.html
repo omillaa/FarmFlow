@@ -16,20 +16,23 @@
         <tr>
             <th>Data da Colheita</th>
             <th>Quantidade Colhida</th>
+            <th>Plantacao</th>
+            <th>Comandos</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="colheita : ${lista}">
             <td th:text="${colheita.dataColheita}"></td>
             <td th:text="${colheita.quantidade}"></td>
+            <td th:text="${colheita.plantacao.nome}"></td>
             <td>
-                <form action="/colheita" method="post">
+                <form action="/colheita" method="post" id="view_form">
                     <input type="hidden" name="_method" value ="delete">
                     <input type="hidden" name="idColheita" th:value ="${colheita.idColheita}">
                     <input type="submit" value="Excluir">
                 </form>
 
-                <form action="/colheita/formColheita" method="get">
+                <form action="/colheita/formColheita" method="get" id="view_form2">
                     <input type="hidden" name="idColheita" th:value="${colheita.idColheita}">
                     <input type="submit" value="Editar">
                 </form>

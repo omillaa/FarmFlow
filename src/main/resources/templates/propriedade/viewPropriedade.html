@@ -18,6 +18,7 @@
             <th>Endereço da Propriedade</th>
             <th>Área Total(m2)</th>
             <th>Responsável pela Propriedade</th>
+            <th>Comandos</th>
         </tr>
         </thead>
         <tbody>
@@ -27,13 +28,13 @@
             <td th:text="${propriedade.areaTotal}"></td>
             <td th:text="${propriedade.responsavel}"></td>
             <td>
-                <form action="/propriedade" method="post">
+                <form action="/propriedade" method="post" id="view_form">
                     <input type="hidden" name="_method" value ="delete">
                     <input type="hidden" name="idPropriedade" th:value="${propriedade.idPropriedade}">
                     <input type="submit" value="Excluir">
                 </form>
 
-                <form action="/propriedade/formPropriedade" method="get">
+                <form action="/propriedade/formPropriedade" method="get" id="view_form2">
                     <input type="hidden" name="idPropriedade" th:value="${propriedade.idPropriedade}">
                     <input type="submit" value="Editar">
                 </form>

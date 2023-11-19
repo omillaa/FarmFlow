@@ -36,6 +36,7 @@ public class Irrigacao {
         this.quantid = dados.quantid();
         this.tipoIrrig = dados.tipoIrrig();
         this.observacao = dados.observacao();
+        this.plantacao = dados.plantacao();
     }
     public void atualizaDados (DadosAlteraIrrigacao dados)
     {
@@ -44,6 +45,8 @@ public class Irrigacao {
         this.quantid = dados.quantid();
         this.tipoIrrig = dados.tipoIrrig();
         this.observacao = dados.observacao();
+        this.plantacao = dados.plantacao();
+
     }
     @Override
     public String toString()

@@ -19,6 +19,7 @@
             <th>Estágio de Crescimento</th>
             <th>Cultura</th>
             <th>Propriedade</th>
+            <th>Comandos</th>
         </tr>
         </thead>
         <tbody>
@@ -29,13 +30,13 @@
             <td th:text="${plantacao.cultura.nome}"></td>
             <td th:text="${plantacao.propriedade.nome}"></td>
             <td>
-                <form action="/plantacao" method="post">
+                <form action="/plantacao" method="post" id="view_form">
                     <input type="hidden" name="_method" value ="delete">
                     <input type="hidden" name="idPlantacao" th:value ="${plantacao.idPlantacao}">
                     <input type="submit" value="Excluir">
                 </form>
 
-                <form action="/plantacao/formPlantacao" method="get">
+                <form action="/plantacao/formPlantacao" method="get"id="view_form2">
                     <input type="hidden" name="id" th:value="${plantacao.idPlantacao}">
                     <input type="submit" value="Editar">
                 </form>

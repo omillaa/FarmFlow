@@ -5,6 +5,7 @@ import com.LCA.FarmFlow.model.irrigacao.DadosAlteraIrrigacao;
 import com.LCA.FarmFlow.model.irrigacao.DadosCadastraIrrigacao;
 import com.LCA.FarmFlow.model.irrigacao.Irrigacao;
 import com.LCA.FarmFlow.model.irrigacao.IrrigacaoRepository;
+import com.LCA.FarmFlow.model.plantacao.PlantacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,10 +17,18 @@ import org.springframework.web.bind.annotation.*;
 public class IrrigacaoController {
     @Autowired
     private IrrigacaoRepository repository;
+    @Autowired
+    private PlantacaoRepository repositoryPlantacao;
     @GetMapping("/formIrrigacao")
-    public String carregaPaginaFormulario(Model model, @RequestParam(required = false) Long id) {
-        Irrigacao irrigacao = (id != null) ? repository.findById(id).orElse(null) : null;
-        model.addAttribute("irrigacao", irrigacao);
+    public String carregaPaginaFormulario(Model model,Long id) {
+
+        if(id!=null)
+        {
+            Irrigacao irrigacao = repository.getReferenceById(id);
+            model.addAttribute("irrigacao", irrigacao);
+        }
+        model.addAttribute("lista", repositoryPlantacao.findAll());
+
         return "irrigacao/formIrrigacao";
     }
     @GetMapping("/viewIrrigacao")
