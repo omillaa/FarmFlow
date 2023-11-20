@@ -3,11 +3,15 @@ import com.LCA.FarmFlow.model.cultura.Cultura;
 import com.LCA.FarmFlow.model.cultura.CulturaRepository;
 import com.LCA.FarmFlow.model.cultura.DadosAlteraCultura;
 import com.LCA.FarmFlow.model.cultura.DadosCadastraCultura;
+import com.LCA.FarmFlow.model.irrigacao.Irrigacao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -48,5 +52,13 @@ private CulturaRepository repository;
         C1.atualizaDados(dados);
         return "cultura/formCultura";
     }
-
+    @GetMapping("/buscaCultura")
+    public String loadPage(Model model)
+    {   return "cultura/buscaCultura"; }
+    @GetMapping("/cultura")
+    public String buscaCultura (Model model, @RequestParam("nome") String nome) {
+        List<Cultura> culturas = repository.buscaCultura(nome);
+        model.addAttribute("culturas",culturas);
+        return "cultura/buscaCultura";
+    }
 }

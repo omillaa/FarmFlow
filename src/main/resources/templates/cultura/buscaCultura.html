@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Busca de Culturas</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h2>Busca de Culturas</h2>
+
+    <form action="cultura/buscaCultura" method="get">
+        <label for="nome">Nome da Cultura:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome da Cultura:">
+        <input type="submit" value="Pesquisar">
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Tempo</th>
+                <th>Tipo da Cultura</th>
+                <th>Tipo do Solo</th>
+                <th>Estação</th>
+                <th>Comandos</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cultura : ${lista}">
+                <td th:text="${cultura.nome}"></td>
+                <td th:text="${cultura.descricao}"></td>
+                <td th:text="${cultura.tempo}"></td>
+                <td th:text="${cultura.tipo}"></td>
+                <td th:text="${cultura.tipos}"></td>
+                <td th:text="${cultura.est}"></td>
+                <td>
+                    <form action="/cultura" method="post" id="view_form">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="id" th:value="${cultura.id}">
+                        <input type="submit" value="Excluir">
+                    </form>
+
+                    <form action="/cultura/formCultura" method="get" id="view_form2">
+                        <input type="hidden" name="id" th:value="${cultura.id}">
+                        <input type="submit" value="Editar">
+                    </form>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>
