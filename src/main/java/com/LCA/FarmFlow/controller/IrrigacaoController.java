@@ -7,10 +7,14 @@ import com.LCA.FarmFlow.model.irrigacao.Irrigacao;
 import com.LCA.FarmFlow.model.irrigacao.IrrigacaoRepository;
 import com.LCA.FarmFlow.model.plantacao.PlantacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 @RequestMapping("/irrigacao")
@@ -57,5 +61,15 @@ public class IrrigacaoController {
        i1.atualizaDados(dados);
         return "irrigacao/formIrrigacao";
     }
+    @GetMapping("/buscaIrrigacao")
+    public String loadPage(Model model)
+    {   return "irrigacao/buscaIrrigacao"; }
+    @GetMapping("/irrigacao")
+    public String getIrrigacoesPorData(Model model, @RequestParam("dataIrrig") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataIrrig) {
+        List<Irrigacao>irrigacoes = repository.buscaIrrig(dataIrrig);
+        model.addAttribute("irrigacoes",irrigacoes);
+        return "irrigacao/buscaIrrigacao";
+    }
+
 
 }
