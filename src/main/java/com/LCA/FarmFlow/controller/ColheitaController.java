@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Controller
 @RequestMapping("/colheita")
 public class ColheitaController {
@@ -61,5 +64,10 @@ public class ColheitaController {
         C2.autualizaDados(dados);
         repositoryColheita.save(C2);
         return "redirect:/colheita/viewColheita";
+    }
+    @GetMapping("/buscaColheita")
+    public List<Colheita> buscaColheita(@RequestParam String dataColheita) {
+        LocalDate data = LocalDate.parse(dataColheita);
+        return repositoryColheita.buscaColheita(data);
     }
 }

@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/busca")
 public class BuscaController {
-
-
     @GetMapping("/busca")
     public String loadPage(Model model) {
 

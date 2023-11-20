@@ -10,8 +10,6 @@ public class Colheita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idColheita;
-
-
     @ManyToOne
     @JoinColumn(name = "idPlantacao")
     private Plantacao plantacao;
@@ -22,8 +20,6 @@ public class Colheita {
     public String getQuantidade() { return quantidade; }
     public Plantacao getPlantacao() {return plantacao;}
     public void setPlantacao(Plantacao plantacao) {this.plantacao = plantacao;}
-
-
     public Colheita(DadosCadastraColheita dados)
     {
         this.dataColheita = dados.dataColheita();
