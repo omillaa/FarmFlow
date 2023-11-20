@@ -1,0 +1,45 @@
+<!-- busca.html -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Busca de Propriedades</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h2>Busca de Propriedades</h2>
+
+    <form action="/propriedade/busca" method="get">
+        <label for="responsavel">Escolha o Responsável:</label>
+        <input type="text" id="responsavel" name="responsavel" required>
+        <div style="display: flex; justify-content:center;">
+            <input type="submit" value="Buscar">
+        </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Área Total</th>
+            <th>Responsável</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="propriedade : ${listaPropriedade}">
+            <td th:text="${propriedade.idPropriedade}"></td>
+            <td th:text="${propriedade.nome}"></td>
+            <td th:text="${propriedade.endereco}"></td>
+            <td th:text="${propriedade.areaTotal}"></td>
+            <td th:text="${propriedade.responsavel}"></td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Busca de Propriedades</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h2>Busca de Propriedades</h2>
+
+    <form action="/plantacao/busca" method="get">
+        <label for="nome">Escolha a Plantacao:</label>
+        <input type="text" id="nome" name="nome" required>
+        <div style="display: flex; justify-content:center;">
+            <input type="submit" value="Buscar">
+        </div>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>Data do Plantio</th>
+            <th>Área do Cultivo</th>
+            <th>Estágio de Crescimento</th>
+            <th>Cultura</th>
+            <th>Propriedade</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="plantacao : ${listaPlantacao}">
+            <td th:text="${plantacao.dataPlantio}"></td>
+            <td th:text="${plantacao.areaCultivo}"></td>
+            <td th:text="${plantacao.estagio}"></td>
+            <td th:text="${plantacao.cultura.nome}"></td>
+            <td th:text="${plantacao.propriedade.nome}"></td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+
+</div>
+</body>
+</html>

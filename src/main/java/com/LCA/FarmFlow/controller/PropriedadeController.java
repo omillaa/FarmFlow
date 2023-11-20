@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+
 @Controller
 @RequestMapping("/propriedade")
 public class PropriedadeController {
@@ -34,7 +37,7 @@ public class PropriedadeController {
     public String cadastraPropriedade(DadosCadastraPropriedade dados) {
         Propriedade P1 = new Propriedade(dados);
         repositoryPropriedade.save(P1);
-        return "redirect:/propriedade/formPlantacao";
+        return "redirect:/propriedade/formPropriedade";
     }
     @DeleteMapping
     @Transactional
@@ -50,5 +53,16 @@ public class PropriedadeController {
         Propriedade P1 = repositoryPropriedade.getReferenceById(dados.idPropriedade());
         P1.atualizaDados(dados);
         return "propriedade/formPropriedade";
+    }
+
+    @GetMapping("/busca")
+    public String buscaPropriedade(Model model, @RequestParam String responsavel) {
+
+        List<Propriedade> propriedades = repositoryPropriedade.findByResponsavel(responsavel);
+
+        // Adicionar os resultados ao modelo para serem exibidos na view
+        model.addAttribute("listaPropriedade", propriedades);
+
+        return "busca/busca";
     }
 }

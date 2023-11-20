@@ -7,12 +7,15 @@ import com.LCA.FarmFlow.model.plantacao.DadosAlteraPlantacao;
 import com.LCA.FarmFlow.model.plantacao.DadosCadastraPlantacao;
 import com.LCA.FarmFlow.model.plantacao.Plantacao;
 import com.LCA.FarmFlow.model.plantacao.PlantacaoRepository;
+import com.LCA.FarmFlow.model.propriedade.Propriedade;
 import com.LCA.FarmFlow.model.propriedade.PropriedadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/plantacao")
@@ -62,5 +65,12 @@ public class PlantacaoController {
         p1.atualizaDados(dados);
         return "plantacao/formPlantacao";
     }
+    @GetMapping("/busca")
+    public String buscaPlantacao(Model model, @RequestParam String nome) {
+        List<Plantacao> plantacoesEncontradas = repository.findByNome(nome);
+        model.addAttribute("listaPlantacao", plantacoesEncontradas);
+        return "busca/buscaPlan";
+    }
+
 
 }
