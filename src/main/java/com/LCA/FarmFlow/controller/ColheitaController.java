@@ -65,7 +65,14 @@ public class ColheitaController {
         repositoryColheita.save(C2);
         return "redirect:/colheita/viewColheita";
     }
+
+
     @GetMapping("/buscaColheita")
+    public String loadPage(Model model) {
+
+        return "colheita/buscaColheita";
+    }
+    @GetMapping("/colheita")
     public List<Colheita> buscaColheita(@RequestParam String dataColheita) {
         LocalDate data = LocalDate.parse(dataColheita);
         return repositoryColheita.buscaColheita(data);
