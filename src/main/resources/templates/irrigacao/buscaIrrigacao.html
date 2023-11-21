@@ -10,21 +10,20 @@
         <div layout:fragment="conteudo">
             <h2>Busca de Irrigação</h2>
 
-            <form action="irrigacao/buscaIrrigacao" method="get">
+            <form action="irrigacao/irrigacao" method="get">
                 <label for="dataIrrig">Data da Irrigação:</label>
                 <input type="text" id="dataIrrig" name="dataIrrig" placeholder="Digite a data da Irrigação">
                 <input type="submit" value="Pesquisar">
                 <table>
                     <thead>
-                    <tr>
-                        <th>Data da Irrigação</th>
-                        <th>Quantidade de Água usada</th>
-                        <th>Duração da Irrigação(tempo)</th>
-                        <th>Tipo da Irrigação</th>
-                        <th>Observações</th>
-                        <th>Plantacao</th>
-                        <th>Comandos</th>
-                    </tr>
+                        <tr>
+                            <th>Data da Irrigação</th>
+                            <th>Quantidade de Água usada</th>
+                            <th>Duração da Irrigação(tempo)</th>
+                            <th>Tipo da Irrigação</th>
+                            <th>Observações</th>
+                            <th>Plantacao</th>
+                        </tr>
                     </thead>
                     <tbody>
                     <tr th:each="irrigacao : ${lista}">
@@ -35,16 +34,6 @@
                         <td th:text="${irrigacao.observacao}"></td>
                         <td th:text="${irrigacao.plantacao.nome}"></td>
                         <td>
-                            <form action="/irrigacao" method="post" id="view_form">
-                                <input type="hidden" name="_method" value ="delete" >
-                                <input type="hidden" name="idIrrigacao" th:value ="${irrigacao.idIrrigacao}">
-                                <input type="submit" value="Excluir">
-                            </form>
-
-                            <form action="/irrigacao/formIrrigacao" method="get" id="view_form2">
-                                <input type="hidden" name="id" th:value="${irrigacao.idIrrigacao}">
-                                <input type="submit" value="Editar">
-                            </form>
                         </td>
                     </tr>
                     </tbody>

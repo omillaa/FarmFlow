@@ -67,7 +67,7 @@ public class IrrigacaoController {
     @GetMapping("/irrigacao")
     public String getIrrigacoesPorData(Model model, @RequestParam("dataIrrig") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataIrrig) {
         List<Irrigacao>irrigacoes = repository.buscaIrrig(dataIrrig);
-        model.addAttribute("irrigacoes",irrigacoes);
+        model.addAttribute("lista",irrigacoes);
         return "irrigacao/buscaIrrigacao";
     }
 

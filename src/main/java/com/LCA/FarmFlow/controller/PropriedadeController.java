@@ -60,7 +60,6 @@ public class PropriedadeController {
 
         List<Propriedade> propriedades = repositoryPropriedade.findByResponsavel(responsavel);
 
-        // Adicionar os resultados ao modelo para serem exibidos na view
         model.addAttribute("listaPropriedade", propriedades);
 
         return "busca/busca";

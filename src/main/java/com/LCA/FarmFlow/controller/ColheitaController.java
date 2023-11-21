@@ -4,11 +4,6 @@ import com.LCA.FarmFlow.model.colheita.Colheita;
 import com.LCA.FarmFlow.model.colheita.ColheitaRepository;
 import com.LCA.FarmFlow.model.colheita.DadosAlteraColheita;
 import com.LCA.FarmFlow.model.colheita.DadosCadastraColheita;
-import com.LCA.FarmFlow.model.cultura.Cultura;
-import com.LCA.FarmFlow.model.cultura.CulturaRepository;
-import com.LCA.FarmFlow.model.cultura.DadosAlteraCultura;
-import com.LCA.FarmFlow.model.cultura.DadosCadastraCultura;
-import com.LCA.FarmFlow.model.plantacao.Plantacao;
 import com.LCA.FarmFlow.model.plantacao.PlantacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Controller
 @RequestMapping("/colheita")
@@ -71,9 +65,13 @@ public class ColheitaController {
         return "colheita/buscaColheita";
     }
     @GetMapping("/colheita")
-    public List<Colheita> buscaColheita(@RequestParam String dataColheita ) {
+    public String buscaColheita(Model model, @RequestParam String dataColheita ) {
         LocalDate data = LocalDate.parse(dataColheita);
-        return repositoryColheita.buscaColheita(data);
+
+        model.addAttribute("listaColheita", repositoryColheita.buscaColheita(data));
+
+        return "colheita/buscaColheita";
+
     }
 
 }
