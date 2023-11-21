@@ -10,7 +10,7 @@
         <div layout:fragment="conteudo">
             <h2>Busca de Irrigação</h2>
 
-            <form action="irrigacao/irrigacao" method="get">
+            <form action="/irrigacao/irrigacao" method="get">
                 <label for="dataIrrig">Data da Irrigação:</label>
                 <input type="text" id="dataIrrig" name="dataIrrig" placeholder="Digite a data da Irrigação">
                 <input type="submit" value="Pesquisar">
@@ -33,8 +33,6 @@
                         <td th:text="${irrigacao.tipoIrrig}"></td>
                         <td th:text="${irrigacao.observacao}"></td>
                         <td th:text="${irrigacao.plantacao.nome}"></td>
-                        <td>
-                        </td>
                     </tr>
                     </tbody>
                 </table>

@@ -58,7 +58,7 @@ private CulturaRepository repository;
     @GetMapping("/cultura")
     public String buscaCultura (Model model, @RequestParam("nome") String nome) {
         List<Cultura> culturas = repository.buscaCultura(nome);
-        model.addAttribute("culturas",culturas);
+        model.addAttribute("lista",culturas);
         return "cultura/buscaCultura";
     }
 }

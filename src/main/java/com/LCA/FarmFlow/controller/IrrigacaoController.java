@@ -65,11 +65,12 @@ public class IrrigacaoController {
     public String loadPage(Model model)
     {   return "irrigacao/buscaIrrigacao"; }
     @GetMapping("/irrigacao")
-    public String getIrrigacoesPorData(Model model, @RequestParam("dataIrrig") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataIrrig) {
-        List<Irrigacao>irrigacoes = repository.buscaIrrig(dataIrrig);
-        model.addAttribute("lista",irrigacoes);
+    public String getIrrigacoesPorData(Model model, @RequestParam String dataIrrig) {
+        LocalDate data = LocalDate.parse(dataIrrig);
+        model.addAttribute("lista", repository.buscaIrrig(data));
         return "irrigacao/buscaIrrigacao";
     }
+
 
 
 }

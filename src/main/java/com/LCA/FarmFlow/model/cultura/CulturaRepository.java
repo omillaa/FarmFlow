@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface CulturaRepository extends JpaRepository<Cultura, Long> {
-    @Query("SELECT i FROM Cultura i WHERE i.nome = :nome")
+    @Query(value = "SELECT * FROM Cultura WHERE nome = :nome", nativeQuery = true)
     List<Cultura> buscaCultura(@Param("nome") String nome);
+
 }
