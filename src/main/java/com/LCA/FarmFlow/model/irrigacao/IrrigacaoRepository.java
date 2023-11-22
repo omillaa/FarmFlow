@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface IrrigacaoRepository extends JpaRepository<Irrigacao, Long> {
+
     @Query(value ="SELECT i FROM Irrigacao i WHERE i.dataIrrig = :dataIrrig")
     List<Irrigacao> buscaIrrig(@Param("dataIrrig") LocalDate dataIrrig);
 }
