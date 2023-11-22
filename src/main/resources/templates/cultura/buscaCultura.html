@@ -36,16 +36,7 @@
                 <td th:text="${cultura.tipos}"></td>
                 <td th:text="${cultura.est}"></td>
                 <td>
-                    <form action="/cultura" method="post" id="view_form">
-                        <input type="hidden" name="_method" value="delete">
-                        <input type="hidden" name="id" th:value="${cultura.id}">
-                        <input type="submit" value="Excluir">
-                    </form>
 
-                    <form action="/cultura/formCultura" method="get" id="view_form2">
-                        <input type="hidden" name="id" th:value="${cultura.id}">
-                        <input type="submit" value="Editar">
-                    </form>
 
                 </td>
             </tr>
